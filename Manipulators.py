@@ -51,8 +51,8 @@ class Func:
             session.commit()
 
 
-    def change_Task_Content(self, title: str, new_content: str) -> None:
-        task = session.query(Task).filter(Task.title == title).first()
+    def change_Task_Content(self, title: str, author_id: int, new_content: str) -> None:
+        task = session.query(Task).filter(Task.title == title).filter(Task.author_id == author_id).first()
         if task is None:
             print('Task not found')
         else:
@@ -60,8 +60,8 @@ class Func:
             session.commit()
     
 
-    def change_Task_Status(self, title: str) -> None:
-        task = session.query(Task).filter(Task.title == title).first()
+    def change_Task_Status(self, author_id: int ,title: str) -> None:
+        task = session.query(Task).filter(Task.title == title).filter(Task.author_id == author_id).first()
         if task is None:
             print('Task not found')
         else:
